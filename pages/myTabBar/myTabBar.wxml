@@ -1,0 +1,29 @@
+<view class='tabBar'>
+    <view class='menu'>
+        <view class='homePage' catchtap='toHome'>
+            <image class='home' src='../../images/headshow_01.png'></image>
+            <text>首页</text>
+        </view>
+        <image class='fill {{isRotate == true ? "rotate" : ""}}' src='../../images/plus.png' catchtap='fill'></image>
+        <view class='minePage' catchtap='toMine'>
+            <image class='home' src='../../images/mine_01.png'></image>
+            <text>我的</text>
+        </view>
+    </view>
+    
+    
+    <view class='bgShadow {{showBgShadow == true ? "showBgShadow":""}}'>
+        <view class="newFill {{isShow == true ? 'newFillShow' : ''}}" catchtap='toNewFill'>
+            <image src='../../images/fillbtn_01.jpg'></image>
+            <text>新建填报</text>
+        </view>
+        <view class="historyData {{isShow == true ? 'historyDataShow' : ''}}" catchtap='toHistoryData'>
+            <image src='../../images/history.png'></image>
+            <text>查看历史数据</text>
+        </view>
+            <image class='closeButton {{showClose == true ? "showCloseButton" : ""}}' catchtap='closeFill' src='../../images/close.png'></image>
+    </view> 
+    
+    
+
+</view>

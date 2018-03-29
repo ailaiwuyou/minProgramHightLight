@@ -1,0 +1,4 @@
+<view class='homePage'>
+    <input></input>
+    <myTabBar homeUrl = "{{homeUrl}}" mineUrl = "{{mineUrl}}" newFillUrl = "{{newFillUrl}}" historyUrl = "{{historyUrl}}"></myTabBar>
+</view>

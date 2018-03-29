@@ -1,0 +1,15 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/myTabBar/myTabBar",
+        "pages/mine/mine",
+        "pages/newFill/newFill",
+        "pages/historyData/historyData"
+    ],
+    "window": {
+        "backgroundTextStyle": "white",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "WeChat",
+        "navigationBarTextStyle": "black"
+    }
+}

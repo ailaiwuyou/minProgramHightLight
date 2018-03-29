@@ -1,0 +1,13 @@
+<view class='homePage'>
+    我是首页
+    <input bindinput="bindKeyInput"></input>
+    <view wx:for="{{newJson}}" wx:for-item='item' wx:key>
+        <rich-text nodes="{{item.name}}"></rich-text>   
+        <rich-text nodes="{{item.address}}"></rich-text>   
+        <rich-text nodes="{{item.age}}"></rich-text>   
+        <view wx:if="{{item.aihao}}" wx:for="{{item.aihao}}" wx:for-item='sitem' wx:key>
+            <rich-text nodes="{{sitem}}"></rich-text>   
+        </view>
+    </view>
+    <myTabBar homeUrl = "{{homeUrl}}" mineUrl = "{{mineUrl}}" newFillUrl = "{{newFillUrl}}" historyUrl = "{{historyUrl}}"></myTabBar>
+</view>

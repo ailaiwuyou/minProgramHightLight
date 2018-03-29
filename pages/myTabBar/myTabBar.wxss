@@ -1,0 +1,169 @@
+/* pages/myTabBar/myTabBar.wxss */
+
+.tabBar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 98rpx;
+    border-top: 1px solid #ccc;
+    overflow: visible;
+    background: #fff;
+}
+
+.tabBar .menu {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    justify-content: space-around;
+    background: #fff;
+    z-index: -10;
+}
+
+.tabBar .homePage, .tabBar .minePage {
+    display: flex;
+    width: 200rpx;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.tabBar .homePage text, .tabBar .minePage text {
+    font-size: 20rpx;
+    color: #0cc;
+}
+
+.tabBar .home {
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.tabBar .menu .fill {
+    width: 90rpx;
+    height: 90rpx;
+    /* background: #0cc; */
+    position: absolute;
+    border-radius: 50%;
+    top: -20rpx;
+    transition: all 0.5s;
+}
+
+.tabBar .menu .rotate {
+    transform: rotate(-90deg);
+}
+
+.tabBar .newFill {
+    position: absolute;
+    width: 100rpx;
+    bottom: 20rpx;
+    left: 320rpx;
+    height: 150rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: -2;
+    opacity: 0;
+    align-items: center;
+    transition: all 0.5s ease-out;
+}
+
+.tabBar .historyData {
+    position: absolute;
+    width: 150rpx;
+    bottom: -20rpx;
+    right: 300rpx;
+    height: 150rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0;
+    z-index: -2;
+    transition: all 0.5s ease-out;
+}
+
+.tabBar .closeButton{
+    width:90rpx;
+    height:90rpx;
+    position:absolute;
+    border-radius:50%;
+    bottom:20rpx;
+    left: 330rpx;
+    transition:all 0.5s;
+    z-index: -10;
+    transform: rotate(0);
+    transition: all 0.5s;
+}
+.tabBar .closeButton image{
+    width:90rpx;
+    height:90rpx;
+}
+
+.tabBar .showCloseButton{
+    z-index: 10;
+    transform: rotate(1440deg);
+}
+
+.tabBar .newFillShow {
+    z-index: 10;
+    bottom: 300rpx;
+    left: 143rpx;
+    opacity: 1;
+}
+
+.tabBar .historyDataShow {
+    z-index: 10;
+    bottom: 300rpx;
+    right: 143rpx;
+    opacity: 1;
+}
+
+.tabBar .newFill image {
+    width: 100rpx;
+    height: 100rpx;
+    background: #ffd400;
+    border-radius: 50%;
+    transform: rotate(0);
+    transition: all 0.5s;
+}
+
+.tabBar .historyData image {
+    width: 100rpx;
+    height: 100rpx;
+    background: #60cbff;
+    border-radius: 50%;
+    transform: rotate(0);
+    transition: all 0.5s;
+}
+
+.tabBar .newFillShow image {
+    transform: rotate(-1440deg)
+}
+
+.tabBar .historyDataShow image {
+    transform: rotate(1440deg)
+}
+
+.tabBar .newFill text {
+    font-size: 24rpx;
+    color: #333;
+}
+
+.tabBar .historyData text {
+    font-size: 24rpx;
+    color: #333;
+}
+.bgShadow{
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    display: none;
+    overflow: hidden;
+}
+
+.showBgShadow{
+    display: block;
+    
+}
