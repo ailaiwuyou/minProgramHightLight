@@ -1,13 +1,16 @@
 <view class='homePage'>
-    我是首页
-    <input bindinput="bindKeyInput"></input>
-    <view wx:for="{{newJson}}" wx:for-item='item' wx:key>
-        <rich-text nodes="{{item.name}}"></rich-text>   
-        <rich-text nodes="{{item.address}}"></rich-text>   
-        <rich-text nodes="{{item.age}}"></rich-text>   
-        <view wx:if="{{item.aihao}}" wx:for="{{item.aihao}}" wx:for-item='sitem' wx:key>
-            <rich-text nodes="{{sitem}}"></rich-text>   
+    <view style='flex-grow:1;position:relative;z-index:10'>
+        <view catchtap='haha'>我是首页</view>
+        <input bindinput="bindKeyInput" value='{{tempText}}'></input>
+        <view wx:for="{{newJson}}" wx:for-item='item' wx:key>
+            <rich-text nodes="{{item.name}}"></rich-text>
+            <rich-text nodes="{{item.address}}"></rich-text>
+            <rich-text nodes="{{item.age}}"></rich-text>
+            <view wx:if="{{item.aihao}}" wx:for="{{item.aihao}}" wx:for-item='sitem' wx:key>
+                <rich-text nodes="{{sitem}}"></rich-text>
+            </view>
         </view>
     </view>
-    <myTabBar homeUrl = "{{homeUrl}}" mineUrl = "{{mineUrl}}" newFillUrl = "{{newFillUrl}}" historyUrl = "{{historyUrl}}"></myTabBar>
+    <view wx-if='{{chartNumber == 0 ? false : true}}'>{{chartNumber}}</view>
+    <myTabBar class='beginClass {{showShadow == true ? "showShadow":""}}' homeUrl="{{homeUrl}}" mineUrl="{{mineUrl}}" newFillUrl="{{newFillUrl}}" historyUrl="{{historyUrl}}" bind:showBgShadow='showBgShadow'></myTabBar>
 </view>

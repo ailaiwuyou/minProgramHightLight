@@ -7,27 +7,47 @@ Page({
         mineUrl: '../mine/mine',
         newFillUrl: '../newFill/newFill',
         historyUrl: '../historyData/historyData',
-        json: [{ name: 'eiolewkfp', age: 'awdqwwdk', address: 'aueifwhefwfheffoewjowef',aihao:['sdsd','sdfsd','sdsf']}, { name: '98797', age: '6544656', address: '65494364' }],
+        json: [{ name: '你是谁', age: 'awdqww\\k', address: 'auemnkjkifwh{\\efwfheffoewjowef', aihao: ['sdsd', 'sdfsd', 'sdsf'] }, { name: '98797', age: '6544656', address: 'https://www.baidu.com/' }],
         newJson: '',
-        tempText:''
+        tempText: '',
+        showShadow: false,
+        chartNumber: 0,
+        newStr:''
     },
-
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
         this.setData({
-            newJson:this.data.json
+            newJson: this.data.json
         })
     },
-    digui: function (newJson,obj,key) {
+    haha: function () {
+        console.log('haha');
+        wx.navigateTo({
+            url: '../mine/mine',
+        })
+    },
+    digui: function (newJson, obj, key) {
+        var urlReg = new RegExp('(https ?|ftp | file)://[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]')
         var that = this;
-        var reg = new RegExp(that.data.tempText,'g');
-        if (newJson.constructor == Array) { 
-            newJson.forEach(function (item,index) {
-                if (item.constructor == String){
-                    obj[key].splice(index, 1, item.replace(reg, "<span style='color:red'>" + that.data.tempText + "</span>"))
-                }else{
+        var reg = that.data.tempText;
+        if (that.data.tempText == '.' || that.data.tempText == '\\' || that.data.tempText == '\?' || that.data.tempText == '\[' || that.data.tempText == '\]') {
+            reg = '\\' + that.data.tempText
+        }
+        var reg = new RegExp(reg, 'ig');
+        if (newJson.constructor == Array) {
+            newJson.forEach(function (item, index) {
+                if (item.constructor == String && !urlReg.test(item)) {
+                    obj[key].splice(index, 1, item.replace(reg, function (index) {
+                        if (that.data.newStr != ''){
+                            that.setData({
+                                chartNumber: (that.data.chartNumber + 1)
+                            })
+                        }
+                        return "<span style='color:red'>" + that.data.tempText + "</span>"
+                    }))
+                } else {
                     that.digui(item, newJson);
                 }
             });
@@ -35,24 +55,41 @@ Page({
             var json = {};
             for (var key in newJson) {
                 json[key] = newJson;
-                that.digui(newJson[key],newJson,key);
+                that.digui(newJson[key], newJson, key);
             }
-        } else if (newJson.constructor == String) { // 这里做全局替换
-            if(key){
-                obj[key] = newJson.replace(reg, "<span style='color:red'>" + that.data.tempText + "</span>")
+        } else if (newJson.constructor == String && !urlReg.test(newJson)) { // 这里做全局替换
+            if (key) {
+                obj[key] = newJson.replace(reg, function () {
+                    if (that.data.newStr != '') {
+                        that.setData({
+                            chartNumber: (that.data.chartNumber + 1)
+                        })
+                    }
+                    return "<span style='color:red'>" + that.data.tempText + "</span>"
+                })
             }
         }
     },
-    bindKeyInput: function (e) {
-        var text = e.detail.value;
+    showBgShadow: function (e) {
         this.setData({
-            tempText:text
+            showShadow: e.detail.showBgShadow
+        })
+    },
+    bindKeyInput: function (e) {
+        var regChart = this.data.regChart;
+        var text = e.detail.value;
+        var newStr = '';
+        newStr = text.replace(/[\@\#\$\%\^\&\*\{\}\:\"\L\<\>\?\\\.]/, '')
+        this.setData({
+            tempText: newStr,
+            chartNumber: 0,
+            newStr: newStr
         })
         var newJson = JSON.parse(JSON.stringify(this.data.json));
-        
+
         this.digui(newJson);
         this.setData({
-            newJson:newJson
+            newJson: newJson
         })
     }
 

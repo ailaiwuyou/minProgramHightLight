@@ -2,4 +2,13 @@
 .homePage{
     height: 100%;
     background: skyblue;
+    display: flex;
+    flex-direction: column;
+}
+.showShadow{
+    z-index:100 !important;
+}
+.beginClass{
+    z-index:5;
+    height: 128rpx;
 }
